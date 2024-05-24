@@ -1,9 +1,10 @@
 #!/bin/sh
 tput sgr0; clear
 
-## Load Seedbox Components
+## 加载 Seedbox 组件 (Load Seedbox Components)
 source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/seedbox_installation.sh)
-# Check if Seedbox Components is successfully loaded
+
+# 检查 Seedbox 组件是否已成功加载 (Check if Seedbox Components is successfully loaded)
 if [ $? -ne 0 ]; then
 	echo "Component ~Seedbox Components~ failed to load"
 	echo "Check connection with GitHub"
@@ -26,7 +27,7 @@ info_2 "$2"
 BLA::start_loading_animation "${BLA_classic[@]}"
 $1 1> /dev/null 2> $3
 if [ $? -ne 0 ]; then
-	fail_3 "FAIL" 
+	fail_3 "FAIL"
 else
 	info_3 "Successful"
 	export $4=1
@@ -37,7 +38,7 @@ BLA::stop_loading_animation
 ## Installation environment Check
 info "Checking Installation Environment"
 # Check Root Privilege
-if [ $(id -u) -ne 0 ]; then 
+if [ $(id -u) -ne 0 ]; then
     fail_exit "This script needs root permission to run"
 fi
 
@@ -135,7 +136,7 @@ while getopts "u:p:c:q:l:rbvx3oh" opt; do
 		;;
 	x ) # process option bbr
 		unset bbrv3_install
-		bbrx_install=1	  
+		bbrx_install=1
 		;;
 	3 ) # process option bbr
 		unset bbrx_install
@@ -225,7 +226,7 @@ while getopts "u:p:c:q:l:rbvx3oh" opt; do
 		need_input "12. -h : Display help message"
 		exit 0
 		;;
-	\? ) 
+	\? )
 		info "Help:"
 		info_2 "Usage: ./Install.sh -u <username> -p <password> -c <Cache Size(unit:MiB)> -q <qBittorrent version> -l <libtorrent version> -b -v -r -3 -x -p"
 		info_2 "Example ./Install.sh -u jerry048 -p 1LDw39VOgors -c 3072 -q 4.3.9 -l v1.2.19 -b -v -r -3"
